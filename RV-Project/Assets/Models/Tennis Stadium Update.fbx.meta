@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: 9b8f059721a862e44a5319d74ff25719
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Back Supports
+    100002: Back Windows
+    100004: Barriers
+    100006: Court
+    100008: Doors.
+    100010: Elevators
+    100012: Isle Steps
+    100014: Levels
+    100016: Lines
+    100018: Low Poly Net
+    100020: Low poly seats
+    100022: Net
+    100024: Plane
+    100026: Rails
+    100028: Roof
+    100030: Roof Frames
+    100032: Seats
+    100034: Stair Rails
+    100036: Stairs
+    100038: Stands
+    100040: Steps
+    100042: //RootNode
+    100044: Umpires Chair
+    100046: Upper Stairs
+    100048: Windows
+    400000: Back Supports
+    400002: Back Windows
+    400004: Barriers
+    400006: Court
+    400008: Doors.
+    400010: Elevators
+    400012: Isle Steps
+    400014: Levels
+    400016: Lines
+    400018: Low Poly Net
+    400020: Low poly seats
+    400022: Net
+    400024: Plane
+    400026: Rails
+    400028: Roof
+    400030: Roof Frames
+    400032: Seats
+    400034: Stair Rails
+    400036: Stairs
+    400038: Stands
+    400040: Steps
+    400042: //RootNode
+    400044: Umpires Chair
+    400046: Upper Stairs
+    400048: Windows
+    2100000: Black
+    2100002: Glass
+    2100004: Gray
+    2100006: White.001
+    2100008: Yellow
+    2100010: White
+    2100012: Red
+    2100014: Brown
+    2100016: Red 02
+    2100018: Gray_Light
+    2100020: Blue_Darker
+    2100022: Blue_Lighter
+    2100024: Green
+    2300000: Back Supports
+    2300002: Back Windows
+    2300004: Barriers
+    2300006: Court
+    2300008: Doors.
+    2300010: Elevators
+    2300012: Isle Steps
+    2300014: Levels
+    2300016: Lines
+    2300018: Low Poly Net
+    2300020: Low poly seats
+    2300022: Net
+    2300024: Plane
+    2300026: Rails
+    2300028: Roof
+    2300030: Roof Frames
+    2300032: Seats
+    2300034: Stair Rails
+    2300036: Stairs
+    2300038: Stands
+    2300040: Steps
+    2300042: Umpires Chair
+    2300044: Upper Stairs
+    2300046: Windows
+    3300000: Back Supports
+    3300002: Back Windows
+    3300004: Barriers
+    3300006: Court
+    3300008: Doors.
+    3300010: Elevators
+    3300012: Isle Steps
+    3300014: Levels
+    3300016: Lines
+    3300018: Low Poly Net
+    3300020: Low poly seats
+    3300022: Net
+    3300024: Plane
+    3300026: Rails
+    3300028: Roof
+    3300030: Roof Frames
+    3300032: Seats
+    3300034: Stair Rails
+    3300036: Stairs
+    3300038: Stands
+    3300040: Steps
+    3300042: Umpires Chair
+    3300044: Upper Stairs
+    3300046: Windows
+    4300000: Low Poly Net
+    4300002: Back Windows
+    4300004: Roof
+    4300006: Roof Frames
+    4300008: Stairs
+    4300010: Seats
+    4300012: Low poly seats
+    4300014: Plane
+    4300016: Back Supports
+    4300018: Isle Steps
+    4300020: Doors.
+    4300022: Levels
+    4300024: Stands
+    4300026: Umpires Chair
+    4300028: Rails
+    4300030: Elevators
+    4300032: Barriers
+    4300034: Windows
+    4300036: Net
+    4300038: Stair Rails
+    4300040: Upper Stairs
+    4300042: Steps
+    4300044: Court
+    4300046: Lines
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

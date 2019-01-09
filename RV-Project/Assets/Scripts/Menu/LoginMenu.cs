@@ -17,6 +17,16 @@ public class LoginMenu : MonoBehaviour {
         textField = textObject.GetComponent<Text>();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log("Enter");
+            ButtonClicked();
+            
+        }
+    }
+
     public void ButtonClicked()
     {
         if (textField.text.Length == 5)
@@ -26,6 +36,7 @@ public class LoginMenu : MonoBehaviour {
         }
         else
         {
+            textField.text = null;
             notValidObj.SetActive(true);
             StartCoroutine(NotValidDelete());
         }

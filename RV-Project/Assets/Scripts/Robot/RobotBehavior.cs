@@ -23,6 +23,9 @@ public class RobotBehavior : MonoBehaviour {
     [SerializeField]
     float velocity;
 
+    Quaternion orignalRot;
+    Quaternion newRot;
+
     // Use this for initialization
     void Start () {
         Shoot();

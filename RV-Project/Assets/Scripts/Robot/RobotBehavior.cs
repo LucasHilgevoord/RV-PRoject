@@ -29,7 +29,7 @@ public class RobotBehavior : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Shoot();
-
+        
     }
 
     // Update is called once per frame
@@ -37,9 +37,16 @@ public class RobotBehavior : MonoBehaviour {
         
     }
 
+    void GetRandomRotation()
+    {
+        Vector3 euler = transform.eulerAngles;
+        euler.z = Random.Range(0f, 360f);
+        transform.eulerAngles = euler;
+    }
+
     void Rotate()
     {
-
+        
     }
 
     void Shoot()

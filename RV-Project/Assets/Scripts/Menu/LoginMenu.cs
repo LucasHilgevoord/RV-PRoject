@@ -6,15 +6,17 @@ using UnityEngine.UI;
 public class LoginMenu : MonoBehaviour {
 
     public static string studentID;
-    private Text textField;
     [SerializeField]
-    private GameObject textObject;
+    private Text textField;
     [SerializeField]
     private GameObject notValidObj;
 
+    FadeManager fadeIn;
+
     private void Start()
     {
-        textField = textObject.GetComponent<Text>();
+        fadeIn = GetComponent<FadeManager>();
+        fadeIn.StartCoroutine("CloseWindow");
     }
 
     void Update()
@@ -32,7 +34,7 @@ public class LoginMenu : MonoBehaviour {
         if (textField.text.Length == 5)
         {
             studentID = textField.text;
-            Application.LoadLevel(1);
+            fadeIn.StartCoroutine("OpenWindow");
         }
         else
         {

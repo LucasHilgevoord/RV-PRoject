@@ -9,53 +9,63 @@ public class RobotBehavior : MonoBehaviour {
     [SerializeField]
     Transform firePoint;
     [SerializeField]
-    GameObject body;
+    Transform arm;
 
-    [SerializeField]
     AudioSource audiosrc;
     [SerializeField]
     AudioClip shotSound;
 
     [SerializeField]
-    float rotateSpeed;
+    float rotateDuration = 2f;
     [SerializeField]
     float shootSpeed;
-    [SerializeField]
-    float velocity;
-
-    Quaternion orignalRot;
-    Quaternion newRot;
+    bool rotating = false;
 
     // Use this for initialization
     void Start () {
-        Shoot();
-        
+        audiosrc = GetComponent<AudioSource>();
+        StartCoroutine("RotateLerp");
+        //Shoot();
     }
 
     // Update is called once per frame
     void Update () {
-        
+        if (Input.GetKeyDown("up"))
+        {
+            StartCoroutine("RotateLerp");
+            //Shoot();
+        }
     }
 
-    void GetRandomRotation()
+    IEnumerator RotateLerp()
     {
-        Vector3 euler = transform.eulerAngles;
-        euler.z = Random.Range(0f, 360f);
-        transform.eulerAngles = euler;
-    }
+        Vector3 newRotation = arm.transform.eulerAngles;
+        newRotation.y = Random.Range(-80f, -100f);
 
-    void Rotate()
-    {
-        
+        float counter = 0;
+        while (counter < rotateDuration)
+        {
+            counter += Time.deltaTime;
+            arm.transform.rotation = Quaternion.Lerp(arm.transform.rotation, Quaternion.Euler(newRotation), counter / rotateDuration);
+            yield return null;
+        }
+
+        Shoot();
+        yield return 0;
     }
 
     void Shoot()
     {
         GameObject ballInstance = Instantiate(ball, firePoint.position, firePoint.rotation) as GameObject;
         Rigidbody ballRb = ballInstance.GetComponent<Rigidbody>();
-        ballRb.velocity = velocity * firePoint.forward; ;
+        //ballRb.velocity = velocity * firePoint.forward;
+        float velocity = Random.Range(5.7f, 6.5f);
+        ballRb.AddForce(firePoint.forward * velocity * 100);
 
         audiosrc.clip = shotSound;
         audiosrc.Play();
+        StartCoroutine("RotateLerp");
+        Destroy(ballInstance, 5f);
+        
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Points : MonoBehaviour {
 
+    public static int points;
     [SerializeField]
     private Text ScoreText;
     string fmt = "00000";

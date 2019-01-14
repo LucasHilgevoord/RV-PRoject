@@ -11,8 +11,7 @@ public class FadeManager : MonoBehaviour {
     private float fadeSpeed = 2f;
     [SerializeField]
     private GameObject blackScreen;
-    [SerializeField]
-    private int sceneNumber;
+    public int sceneNumber;
 
     public IEnumerator OpenWindow() {
         blackScreen.SetActive(true);
@@ -28,7 +27,7 @@ public class FadeManager : MonoBehaviour {
         blackScreen.SetActive(true);
         canvasGroup.alpha = 1;
         while (canvasGroup.alpha > 0) {
-            canvasGroup.alpha -= Time.deltaTime * fadeSpeed;
+            canvasGroup.alpha -= Time.deltaTime * (fadeSpeed);
             yield return null;
             if (canvasGroup.alpha == 0) {
                 blackScreen.SetActive(false);

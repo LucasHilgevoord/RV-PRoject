@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: 36033d77ca756fd4bbf00944e9b4a078
+  - enabled: 1
+    path: Assets/Scenes/RewardMenu.unity
+    guid: 795bedb4f71ab6e448debbf4eea6d8d5
   m_configObjects: {}

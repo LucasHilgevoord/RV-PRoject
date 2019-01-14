@@ -17,14 +17,11 @@ public class RobotBehavior : MonoBehaviour {
 
     [SerializeField]
     float rotateDuration = 2f;
-    [SerializeField]
-    float shootSpeed;
-    bool rotating = false;
 
     // Use this for initialization
     void Start () {
         audiosrc = GetComponent<AudioSource>();
-        StartCoroutine("RotateLerp");
+        //StartCoroutine("RotateLerp");
         //Shoot();
     }
 
@@ -32,12 +29,11 @@ public class RobotBehavior : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown("up"))
         {
-            StartCoroutine("RotateLerp");
-            //Shoot();
+            //StartCoroutine("RotateLerp");
         }
     }
 
-    IEnumerator RotateLerp()
+    public IEnumerator RotateLerp()
     {
         Vector3 newRotation = arm.transform.eulerAngles;
         newRotation.y = Random.Range(-80f, -100f);
@@ -66,6 +62,5 @@ public class RobotBehavior : MonoBehaviour {
         audiosrc.Play();
         StartCoroutine("RotateLerp");
         Destroy(ballInstance, 5f);
-        
     }
 }

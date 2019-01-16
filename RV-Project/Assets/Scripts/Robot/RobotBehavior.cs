@@ -26,15 +26,20 @@ public class RobotBehavior : MonoBehaviour {
     Quaternion orignalRot;
     Quaternion newRot;
 
-    // Use this for initialization
-    void Start () {
-        Shoot();
+    private float timerLength = 10f;
+    private float timer = 0f;
+    private bool shootActive = false;
 
+    // Use this for initialization
+    void Start ()
+    {
+        //Shoot();
     }
 
     // Update is called once per frame
-    void Update () {
-        
+    void Update ()
+    {
+        Shoot();
     }
 
     void Rotate()
@@ -44,11 +49,14 @@ public class RobotBehavior : MonoBehaviour {
 
     void Shoot()
     {
-        GameObject ballInstance = Instantiate(ball, firePoint.position, firePoint.rotation) as GameObject;
-        Rigidbody ballRb = ballInstance.GetComponent<Rigidbody>();
-        ballRb.velocity = velocity * firePoint.forward; ;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject ballInstance = Instantiate(ball, firePoint.position, firePoint.rotation) as GameObject;
+            Rigidbody ballRb = ballInstance.GetComponent<Rigidbody>();
+            ballRb.velocity = velocity * firePoint.forward; ;
 
-        audiosrc.clip = shotSound;
-        audiosrc.Play();
+            audiosrc.clip = shotSound;
+            audiosrc.Play();
+        }
     }
 }

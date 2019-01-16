@@ -31,7 +31,7 @@ public class RobotBehavior : MonoBehaviour {
     {
         Vector3 newRotation = arm.transform.eulerAngles;
         //newRotation.y = Random.Range(-80f, -100f);
-        newRotation.y = Random.Range(-90f, -95f);
+        newRotation.y = Random.Range(-85f, -95f);
 
         float counter = 0;
         while (counter < rotateDuration)

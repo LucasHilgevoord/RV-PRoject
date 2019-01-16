@@ -9,12 +9,21 @@ public class Timer : MonoBehaviour {
     public bool gameStart;
     [SerializeField]
     private Text timerObj;
+    PauzeMenu pauzeScript;
 
-	void Update () {
+    private void Start()
+    {
+        pauzeScript = GetComponent<PauzeMenu>();
+    }
+
+    void Update () {
         if (gameStart)
         {
-            countUp += Time.deltaTime;
-            timerObj.text = (((Mathf.Floor(countUp / 60f)) % 60).ToString("00")) + ":" + (Mathf.Floor(countUp % 60f).ToString("00"));
+            if (!pauzeScript.pauzeOpen)
+            {
+                countUp += Time.deltaTime;
+                timerObj.text = (((Mathf.Floor(countUp / 60f)) % 60).ToString("00")) + ":" + (Mathf.Floor(countUp % 60f).ToString("00"));
+            }
         }
 
     }

@@ -13,6 +13,8 @@ public class RewardMenuManger : MonoBehaviour {
     [SerializeField]
     Text points;
     string fmt = "0000";
+    [SerializeField]
+    float multiplier = 0.00001f;
 
     // Use this for initialization
     void Start () {
@@ -21,12 +23,13 @@ public class RewardMenuManger : MonoBehaviour {
         timer.text = (((Mathf.Floor(Timer.countUp / 60f)) % 60).ToString("00")) + ":" + (Mathf.Floor(Timer.countUp % 60f).ToString("00"));
         points.text = Points.points.ToString(fmt);
         //Balance = tijd * (1 + C*punten)
-        int calBallance = ;
-        balance.text = calBallance.ToString();
+        CalculateBalance();
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    void CalculateBalance()
+    {
+        float calBallance = Timer.countUp * (1 + multiplier * Points.points) / 1000;
+        balance.text = calBallance.ToString("0.00");
+
+    }
 }

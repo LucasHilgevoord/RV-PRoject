@@ -10,14 +10,9 @@ public class Points : MonoBehaviour {
     private Text ScoreText;
     string fmt = "00000";
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
-		
+        ScoreText.text = points.ToString(fmt);
 	}
 
     

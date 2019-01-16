@@ -20,6 +20,8 @@ public class SceneManager : MonoBehaviour {
     {
         fadeIn.StartCoroutine("OpenWindow");
         fadeIn.sceneNumber = 1;
+        Timer.countUp = 0;
+        Points.points = 0;
     }
     public void MainGame()
     {

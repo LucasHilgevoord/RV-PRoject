@@ -10,6 +10,9 @@ public class RobotBehavior : MonoBehaviour {
     Transform firePoint;
     [SerializeField]
     Transform arm;
+    [SerializeField]
+    GameObject gameManager;
+    PauzeMenu pauzeScript;
 
     AudioSource audiosrc;
     [SerializeField]
@@ -21,22 +24,14 @@ public class RobotBehavior : MonoBehaviour {
     // Use this for initialization
     void Start () {
         audiosrc = GetComponent<AudioSource>();
-        //StartCoroutine("RotateLerp");
-        //Shoot();
-    }
-
-    // Update is called once per frame
-    void Update () {
-        if (Input.GetKeyDown("up"))
-        {
-            //StartCoroutine("RotateLerp");
-        }
+        pauzeScript = gameManager.GetComponent<PauzeMenu>();
     }
 
     public IEnumerator RotateLerp()
     {
         Vector3 newRotation = arm.transform.eulerAngles;
-        newRotation.y = Random.Range(-80f, -100f);
+        //newRotation.y = Random.Range(-80f, -100f);
+        newRotation.y = Random.Range(-85f, -95f);
 
         float counter = 0;
         while (counter < rotateDuration)
@@ -45,22 +40,24 @@ public class RobotBehavior : MonoBehaviour {
             arm.transform.rotation = Quaternion.Lerp(arm.transform.rotation, Quaternion.Euler(newRotation), counter / rotateDuration);
             yield return null;
         }
-
         Shoot();
         yield return 0;
     }
 
     void Shoot()
     {
-        GameObject ballInstance = Instantiate(ball, firePoint.position, firePoint.rotation) as GameObject;
-        Rigidbody ballRb = ballInstance.GetComponent<Rigidbody>();
-        //ballRb.velocity = velocity * firePoint.forward;
-        float velocity = Random.Range(5.7f, 6.5f);
-        ballRb.AddForce(firePoint.forward * velocity * 100);
+        if (!pauzeScript.pauzeOpen)
+        {
+            GameObject ballInstance = Instantiate(ball, firePoint.position, firePoint.rotation) as GameObject;
+            Rigidbody ballRb = ballInstance.GetComponent<Rigidbody>();
+            //ballRb.velocity = velocity * firePoint.forward;
+            float velocity = Random.Range(5.7f, 6.5f);
+            ballRb.AddForce(firePoint.forward * velocity * 100);
 
-        audiosrc.clip = shotSound;
-        audiosrc.Play();
-        StartCoroutine("RotateLerp");
-        Destroy(ballInstance, 5f);
+            audiosrc.clip = shotSound;
+            audiosrc.Play();
+            StartCoroutine("RotateLerp");
+            Destroy(ballInstance, 5f);
+        }
     }
 }

@@ -8,12 +8,15 @@ public class PauzeMenu : MonoBehaviour {
     GameObject pauzeMenu;
     public bool pauzeOpen = false;
 
-    // Use this for initialization
+    //NOTE: Start dispenser through another way later!
+    RobotBehavior robotStart;
+    [SerializeField]
+    private GameObject robot;
+
     void Start () {
-		
-	}
+        robotStart = robot.GetComponent<RobotBehavior>();
+    }
 	
-	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -23,7 +26,9 @@ public class PauzeMenu : MonoBehaviour {
                 pauzeMenu.SetActive(true);
             } else
             {
+                pauzeOpen = !pauzeOpen;
                 pauzeMenu.SetActive(false);
+                robotStart.StartCoroutine("RotateLerp");
             }
         }
     }

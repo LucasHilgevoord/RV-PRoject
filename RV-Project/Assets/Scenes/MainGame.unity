@@ -2326,13 +2326,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1358745219303950, guid: 921aa1a87e651a842b3729e55b9b7f75, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114273004896803296, guid: 921aa1a87e651a842b3729e55b9b7f75,
         type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 12800000, guid: fe91935ed87672343ac5f1cd56a5c838,
+        type: 3}
     - target: {fileID: 114273004896803296, guid: 921aa1a87e651a842b3729e55b9b7f75,
         type: 2}
       propertyPath: m_FontData.m_FontSize
@@ -2366,11 +2367,16 @@ Prefab:
     - target: {fileID: 114273004896803296, guid: 921aa1a87e651a842b3729e55b9b7f75,
         type: 2}
       propertyPath: m_Text
-      value: '!START!'
+      value: Start!
       objectReference: {fileID: 0}
     - target: {fileID: 114273004896803296, guid: 921aa1a87e651a842b3729e55b9b7f75,
         type: 2}
       propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114273004896803296, guid: 921aa1a87e651a842b3729e55b9b7f75,
+        type: 2}
+      propertyPath: m_FontData.m_RichText
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

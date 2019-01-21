@@ -28,7 +28,7 @@ public class RewardMenuManger : MonoBehaviour {
 
     void CalculateBalance()
     {
-        float calBallance = Timer.countUp * (1 + multiplier * Points.points) / 800;
+        float calBallance = Timer.countUp * (1 + multiplier * Points.points) / 1000;
         balance.text = calBallance.ToString("0.00");
 
     }

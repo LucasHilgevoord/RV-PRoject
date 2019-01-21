@@ -51,7 +51,7 @@ public class RobotBehavior : MonoBehaviour {
             GameObject ballInstance = Instantiate(ball, firePoint.position, firePoint.rotation) as GameObject;
             Rigidbody ballRb = ballInstance.GetComponent<Rigidbody>();
             //ballRb.velocity = velocity * firePoint.forward;
-            float velocity = Random.Range(5.7f, 6.5f);
+            float velocity = Random.Range(5.7f, 5.7f);
             ballRb.AddForce(firePoint.forward * velocity * 100);
 
             audiosrc.clip = shotSound;

@@ -31,7 +31,7 @@ public class RobotBehavior : MonoBehaviour {
     {
         Vector3 newRotation = arm.transform.eulerAngles;
         //newRotation.y = Random.Range(-80f, -100f);
-        newRotation.y = Random.Range(-85f, -95f);
+        newRotation.y = Random.Range(-75f, -105f);
 
         float counter = 0;
         while (counter < rotateDuration)
@@ -51,8 +51,21 @@ public class RobotBehavior : MonoBehaviour {
             GameObject ballInstance = Instantiate(ball, firePoint.position, firePoint.rotation) as GameObject;
             Rigidbody ballRb = ballInstance.GetComponent<Rigidbody>();
             //ballRb.velocity = velocity * firePoint.forward;
-            float velocity = Random.Range(5.7f, 5.7f);
+            float velocity = Random.Range(5.2f, 5.7f);
             ballRb.AddForce(firePoint.forward * velocity * 100);
+
+            Vector3 expectedBallPosition = firePoint.position;
+            Vector3 tempVel = firePoint.forward * velocity * 100 * Time.fixedDeltaTime;
+            
+            while(expectedBallPosition.y > 0)
+            {
+                tempVel += Physics.gravity * Time.fixedDeltaTime;
+                expectedBallPosition += tempVel * Time.fixedDeltaTime;
+            }
+
+#if UNITY_EDITOR
+            debugBallPosition = expectedBallPosition;
+#endif
 
             audiosrc.clip = shotSound;
             audiosrc.Play();
@@ -60,4 +73,14 @@ public class RobotBehavior : MonoBehaviour {
             Destroy(ballInstance, 5f);
         }
     }
+
+#if UNITY_EDITOR
+
+    Vector3 debugBallPosition;
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.3f);
+        Gizmos.DrawSphere(debugBallPosition, 0.3f);
+    }
+#endif
 }

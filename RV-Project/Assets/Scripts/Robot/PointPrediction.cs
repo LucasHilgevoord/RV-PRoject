@@ -17,8 +17,6 @@ public class PointPrediction : MonoBehaviour {
     Transform firePoint;
     private LineRenderer lr;
 
-
-
     void Start(){
         lr = firePoint.GetComponent<LineRenderer>();
         //https://en.wikipedia.org/wiki/Projectile_motion

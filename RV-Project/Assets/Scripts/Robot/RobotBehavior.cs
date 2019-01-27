@@ -21,6 +21,8 @@ public class RobotBehavior : MonoBehaviour {
     [SerializeField]
     float rotateDuration = 2f;
 
+    public Vector3 newBallPos;
+
     // Use this for initialization
     void Start () {
         audiosrc = GetComponent<AudioSource>();
@@ -50,8 +52,7 @@ public class RobotBehavior : MonoBehaviour {
         {
             GameObject ballInstance = Instantiate(ball, firePoint.position, firePoint.rotation) as GameObject;
             Rigidbody ballRb = ballInstance.GetComponent<Rigidbody>();
-            //ballRb.velocity = velocity * firePoint.forward;
-            float velocity = Random.Range(5.2f, 5.7f);
+            float velocity = Random.Range(5.7f, 6f);
             ballRb.AddForce(firePoint.forward * velocity * 100);
 
             Vector3 expectedBallPosition = firePoint.position;
@@ -63,6 +64,7 @@ public class RobotBehavior : MonoBehaviour {
                 expectedBallPosition += tempVel * Time.fixedDeltaTime;
             }
 
+            newBallPos = expectedBallPosition;
 #if UNITY_EDITOR
             debugBallPosition = expectedBallPosition;
 #endif

@@ -19,6 +19,8 @@ public class GameStart : MonoBehaviour
     private float fadeSpeed = 2f;
     private AudioSource audiosrc;
 
+
+
     void Start()
     {
         fadeIn = GetComponent<FadeManager>();
@@ -32,6 +34,8 @@ public class GameStart : MonoBehaviour
 
         StartGame();
     }
+
+    
 
     void StartGame()
     {

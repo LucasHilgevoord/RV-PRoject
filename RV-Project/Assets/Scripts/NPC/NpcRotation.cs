@@ -9,33 +9,51 @@ public class NpcRotation : MonoBehaviour {
     [SerializeField]
     private GameObject npcBody;
 
-    private GameObject ball;
+    private GameObject[] ball;
+    private Rigidbody rb;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    [SerializeField]
+    private Material[] randomMat;
+    [SerializeField]
+    private GameObject bodyMatObj;
+
+    // Use this for initialization
+    void Start () {
+        rb = GetComponent<Rigidbody>();
+        Invoke("Jump", Random.Range(0.5f,5f));
+        npcBody.transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform);
+        npcHead.transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform);
+        bodyMatObj.GetComponent<Renderer>().material = randomMat[Random.Range(0, randomMat.Length)];
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        ball = GameObject.FindGameObjectWithTag("Ball");
-        BodyRotation();
-        HeadRotation();
+        ball = GameObject.FindGameObjectsWithTag("Ball");
+        if (ball.Length > 0)
+        {
+            BodyRotation();
+            HeadRotation();
+            //Vector3 forward = npcBody.transform.TransformDirection(Vector3.forward) * 100;
+            //Debug.DrawRay(npcBody.transform.position, forward, Color.green);
+        }
     }
 
     //can be done easier! Will fix this later.
     void BodyRotation() {
-        var lookPos = ball.transform.position - transform.position;
-        lookPos.y = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
-        npcBody.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 10);
+        Quaternion targetRotation = Quaternion.LookRotation(ball[ball.Length - 1].transform.position - npcBody.transform.position);
+        targetRotation.z = 0; targetRotation.x = 0;
+        npcBody.transform.rotation = Quaternion.Slerp(npcBody.transform.rotation, targetRotation, .7f * Time.deltaTime);
     }
 
     void HeadRotation()
     {
-        var lookPos = ball.transform.position - transform.position;
-        lookPos.z = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
-        npcHead.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 10);
+        Quaternion targetRotation = Quaternion.LookRotation(ball[ball.Length - 1].transform.position - npcHead.transform.position);
+        npcHead.transform.rotation = Quaternion.Slerp(npcHead.transform.rotation, targetRotation, 1 * Time.deltaTime);
+    }
+
+    void Jump()
+    {
+        rb.AddForce(Vector3.up * 100f);
+        Invoke("Jump", Random.Range(0.5f, 5f));
     }
 }

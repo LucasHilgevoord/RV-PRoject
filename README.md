@@ -18,9 +18,9 @@ Er waren verschillende Engines en talen die gebruikt konden worden voor deze opd
 	- Min punten:
 		- Nog een C# project voor onze portfolios.
 	- Plus punten:
-    - Goede kinect ondersteuning aanwezig.
-   	- We hebben kennis van de engine.
-    - Snel het product leveren.
+    		- Goede kinect ondersteuning aanwezig.
+   		- We hebben kennis van de engine.
+    		- Snel het product leveren.
     
 - Unreal Engine:
 	- Min punten:
@@ -29,9 +29,9 @@ Er waren verschillende Engines en talen die gebruikt konden worden voor deze opd
 		- Weinig kennis van C++.
 	- Plus punten:
 		- HTC Vive VR ondersteuning aanwezig.
-    	- Minimale Kinect ondersteuning aanwezig.
-    	- Een nieuw C++ project voor onze portfolios.
-    	- Nieuwe engine leren.
+    		- Minimale Kinect ondersteuning aanwezig.
+    		- Een nieuw C++ project voor onze portfolios.
+    		- Nieuwe engine leren.
     
 - Processing:
   	- Min punten:

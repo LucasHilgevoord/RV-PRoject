@@ -20,7 +20,7 @@ Er waren verschillende Engines en talen die gebruikt konden worden voor deze opd
 	- Plus punten:
     		- Goede kinect ondersteuning aanwezig.
    		- We hebben kennis van de engine.
-    		- Snel het product leveren.
+    	- Snel het product leveren.
     
 - Unreal Engine:
 	- Min punten:

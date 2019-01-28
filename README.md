@@ -29,9 +29,9 @@ Er waren verschillende Engines en talen die gebruikt konden worden voor deze opd
 		- Weinig kennis van C++.
 	- Plus punten:
 		- HTC Vive VR ondersteuning aanwezig.
-    		- Minimale Kinect ondersteuning aanwezig.
-    		- Een nieuw C++ project voor onze portfolios.
-    		- Nieuwe engine leren.
+    	- Minimale Kinect ondersteuning aanwezig.
+    	- Een nieuw C++ project voor onze portfolios.
+    	- Nieuwe engine leren.
     
 - Processing:
   	- Min punten:

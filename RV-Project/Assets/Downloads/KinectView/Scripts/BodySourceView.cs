@@ -9,6 +9,8 @@ public class BodySourceView : MonoBehaviour {
     public BodySourceManager mBodySourceManager;
     public GameObject mJointObject;
     public GameObject handPos;
+    public GameObject body;
+    public GameObject centerObject;
 
     //public GameObject temp;
     
@@ -16,10 +18,27 @@ public class BodySourceView : MonoBehaviour {
     private GameObject obMove;
     ObjectMove objectMoveScript;
 
-    public float turnspeed = 200f;
+    public Vector3 targetPosition;
+
+    public float turnspeed = 100f;
 
     private float lastPos = 0f;
     private float curPos = 0f;
+
+    ///
+    public GameObject centerBody;
+    public GameObject handObj;
+
+    private Vector3 RacketPos;
+    private Quaternion RacketRot;
+
+    private float dir = 0;
+    private float rot = 0;
+
+    [SerializeField]
+    private float moveSpeed = 5f;
+    [SerializeField]
+    private float rotateSpeed = 200f;
 
 
     private Dictionary<ulong, GameObject> mBodies = new Dictionary<ulong, GameObject>();
@@ -32,6 +51,7 @@ public class BodySourceView : MonoBehaviour {
     void Start()
     {
         objectMoveScript = obMove.GetComponent<ObjectMove>();
+        //targetPosition.z = handPos.transform.position.z;
     }
 
     void Update() {
@@ -83,6 +103,12 @@ public class BodySourceView : MonoBehaviour {
             }
         }
         #endregion
+
+    }
+
+    private void SetParent(Transform hand)
+    {
+        hand.SetParent(body.transform);
     }
 
     private GameObject CreateBodyObject(ulong id) {
@@ -117,47 +143,118 @@ public class BodySourceView : MonoBehaviour {
         return body;
     }
 
-    private void UpdateBodyObject(Body body, GameObject bodyObject) {
+    public void UpdateBodyObject(Body body, GameObject bodyObject) {
 
         // Update joints
         foreach (JointType _joint in _joints) {
             // Get new target position
             Joint sourceJoint = body.Joints[_joint];
-            Vector3 targetPosition = GetVector3FromJoint(sourceJoint);
-            targetPosition.z = handPos.transform.position.z;
+            targetPosition = GetVector3FromJoint(sourceJoint);
+            
             targetPosition.y = handPos.transform.position.y;
+            targetPosition.z = handPos.transform.position.z;
 
             ///----
-            float rotation = transform.rotation.z;
+            float position = transform.position.x;
             float rotationBorder = 0.45f;
             float xPosHand = mJointObject.transform.position.x;
 
+            //Debug.Log(position);
+
             //Debug.Log(temp.transform.localPosition.x);
 
+            // Border
+            RacketPos = transform.position;
+            RacketRot = handObj.transform.rotation;
+
+
+            // Border left
+            if (RacketPos.x <= centerBody.transform.localPosition.x - 0.5f)
+            {
+                if (dir == -1f)
+                {
+                    moveSpeed = 0;
+                }
+                else if (dir == 1f)
+                {
+                    moveSpeed = 5f;
+                }
+                Debug.Log("Left");
+            }
+            // Border right
+            else if (RacketPos.x >= centerBody.transform.localPosition.x + 0.5f)
+            {
+                if (dir == 1f)
+                {
+                    moveSpeed = 0;
+                }
+                else if (dir == -1f)
+                {
+                    moveSpeed = 5f;
+                }
+                Debug.Log("Right");
+            }
+            else
+            {
+                Debug.Log("Middle");
+            }
+
+
+            // Border up
+            if (RacketRot.z >= centerBody.transform.rotation.z + 0.5f)
+            {
+                if (rot == 2f)
+                {
+                    rotateSpeed = 0;
+                }
+                else if (rot == -2f)
+                {
+                    rotateSpeed = 200f;
+                }
+                Debug.Log("Right");
+            }
+            // Border down
+            else if (RacketRot.z <= centerBody.transform.rotation.z - 0.5f)
+            {
+                if (rot == -2f)
+                {
+                    rotateSpeed = 0;
+                }
+                else if (rot == 2f)
+                {
+                    rotateSpeed = 200f;
+                }
+                Debug.Log("Right");
+            }
+
+
             // Track last position
-            if (curPos < lastPos)
+            if (position < 0)
             {
                 //Debug.Log("left");
-                transform.Rotate(Vector3.forward, turnspeed * Time.deltaTime);
+                //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 45), turnspeed * Time.time);
+                dir = -1f;
             }
-            else if (curPos > lastPos)
+            else if (position > 0)
             {
                 //Debug.Log("right");
-                transform.Rotate(Vector3.back, turnspeed * Time.deltaTime);
+                //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, -45), turnspeed * Time.time);
+                dir = 1f;
             }
 
             if (objectMoveScript.IsMoving)
             {
                 //transform.Rotate(0, 0, xPosHand * turnspeed * Time.deltaTime);
-                curPos = obMove.transform.position.x;
+                curPos = mJointObject.transform.localPosition.x;
             }
             else
             {
-                lastPos = obMove.transform.position.x;
+                lastPos = mJointObject.transform.localPosition.x;
             }
 
             //Debug.Log(curPos);
 
+            /*
             if (rotation >= rotationBorder)
             {
                 transform.Rotate(Vector3.back, turnspeed * Time.deltaTime);
@@ -166,6 +263,7 @@ public class BodySourceView : MonoBehaviour {
             {
                 transform.Rotate(Vector3.forward, turnspeed * Time.deltaTime);
             }
+            */
 
             // Get joint, set new position
             Transform jointObject = bodyObject.transform.Find(_joint.ToString());

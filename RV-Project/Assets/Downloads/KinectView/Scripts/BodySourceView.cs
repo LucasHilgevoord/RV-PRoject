@@ -169,7 +169,7 @@ public class BodySourceView : MonoBehaviour {
 
 
             // Border left
-            if (RacketPos.x <= centerBody.transform.localPosition.x - 0.5f)
+            if (targetPosition.x <= centerBody.transform.localPosition.x - 0.5f)
             {
                 if (dir == -1f)
                 {
@@ -182,7 +182,7 @@ public class BodySourceView : MonoBehaviour {
                 Debug.Log("Left");
             }
             // Border right
-            else if (RacketPos.x >= centerBody.transform.localPosition.x + 0.5f)
+            else if (targetPosition.x >= centerBody.transform.localPosition.x + 0.5f)
             {
                 if (dir == 1f)
                 {
@@ -201,7 +201,7 @@ public class BodySourceView : MonoBehaviour {
 
 
             // Border up
-            if (RacketRot.z >= centerBody.transform.rotation.z + 0.5f)
+            if (targetPosition.z >= centerBody.transform.rotation.z + 0.5f)
             {
                 if (rot == 2f)
                 {
@@ -214,7 +214,7 @@ public class BodySourceView : MonoBehaviour {
                 Debug.Log("Right");
             }
             // Border down
-            else if (RacketRot.z <= centerBody.transform.rotation.z - 0.5f)
+            else if (targetPosition.z <= centerBody.transform.rotation.z - 0.5f)
             {
                 if (rot == -2f)
                 {

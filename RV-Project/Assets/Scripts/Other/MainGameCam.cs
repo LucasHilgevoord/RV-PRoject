@@ -8,11 +8,6 @@ public class MainGameCam : MonoBehaviour {
     [SerializeField]
     Transform resetFocus;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-
     void Update()
     {
         ball = GameObject.FindGameObjectsWithTag("Ball");
